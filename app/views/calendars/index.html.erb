@@ -1,0 +1,10 @@
+<% @calendars.each do |c| %>
+<%= c.title %>
+<ul>
+  <% c.events.each do |e| %>
+    <li> <%= e.title%> - <%= e.date %> - <%= e.notes %></li>
+  <% end %>
+</ul>
+
+
+<% end %>
