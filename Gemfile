@@ -46,9 +46,7 @@ end
 #
 #
 
-gem 'devise'
 
-gem 'figaro'
 
 group :production do
   gem 'thin'
@@ -59,4 +57,12 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener'
+  gem 'annotate'
 end
+
+
+# authentication
+gem 'devise'
+gem 'figaro'
+gem 'omniauth-google-oauth2'
+gem 'uuidtools'

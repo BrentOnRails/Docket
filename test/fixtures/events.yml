@@ -1,12 +1,15 @@
 # == Schema Information
 #
-# Table name: calendars
+# Table name: events
 #
-#  id         :integer          not null, primary key
-#  title      :string(255)
-#  user_id    :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer          not null, primary key
+#  datetime    :datetime
+#  title       :string(255)
+#  notes       :text
+#  calendar_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  date        :date
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
