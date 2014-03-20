@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
 
    has_many :calendars
    has_many :events, :through => :calendars, :source => :events
+   has_many :authorizations
 
 
    def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
