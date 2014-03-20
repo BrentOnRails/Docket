@@ -4,6 +4,8 @@
 
 <div class="jumbotron">
 
+<h2> Sign in with Email </h2>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
@@ -18,9 +20,9 @@
   <div><%= f.submit "Sign in with Email", class: 'btn btn-primary' %></div>
 <% end %>
 
-
-
-
-</div>
+<h2> Sign in with Google </h2>
 
 <%= render "devise/shared/links" %>
+</div>
+
+
