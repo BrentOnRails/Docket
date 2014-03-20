@@ -24,31 +24,52 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
+      <% if user_signed_in? %>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
+          <% end %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
 
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Authentication <b class="caret"></b></a>
+            <% if user_signed_in? %>
+
+            <a href="#" class="dropdown-toggle"
+            data-toggle="dropdown"><%= current_user.email %>
+            <b class="caret"></b></a>
+
             <ul class="dropdown-menu">
-              <li><a href="#">Sign Up</a></li>
-              <li><a href="#">Sign In</a></li>
-              <li><a href="#">Log Out</a></li>
-              <li class="divider"></li>
+  <li><%= link_to "Sign Out", destroy_user_session_url, method: :delete %></li>
+            <li class="divider"></li>
               <li><a href="#">Link Account</a></li>
             </ul>
+            <% else %>
+            <a href="#" class="dropdown-toggle"
+            data-toggle="dropdown">Sign in / Sign Up
+            <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Sign In", new_user_session_url %></li>
+              <li><%= link_to "Sign Up", new_user_registration_url %></li>
+
+            </ul>
+            <% end %>
           </li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
+  <% if notice %>
+  <p class="notice alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+  <p class="alert alert alert-warning"><%= alert %></p>
+  <% end %>
 <%= yield %>
 
 </body>

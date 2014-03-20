@@ -44,6 +44,11 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 #
+#
+
+gem 'devise'
+
+gem 'figaro'
 
 group :production do
   gem 'pg'
@@ -54,4 +59,5 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'letter_opener'
 end
