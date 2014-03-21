@@ -27,7 +27,11 @@ body {
   border-radius: 150px;
 }
 
-.calendar-button {
-//  TODO: CHANGE COLORS HERE BASED ON CALENDAR LABEL COLOR;
-  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
-}
+//.calendar-button {
+////  TODO: CHANGE COLORS HERE BASED ON CALENDAR LABEL COLOR;
+////  @mixin button-variant(gray, black, black)
+//  color: grey;
+//  background-color: black;
+//  border-color: black;
+//
+//}
