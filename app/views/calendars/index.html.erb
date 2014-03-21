@@ -1,3 +1,7 @@
+<h1> Calendars </h2>
+
+<%= "You have no calendars" if @calendars.empty? %>
+
 <% @calendars.each do |c| %>
 <%= c.title %>
 <ul>
@@ -5,6 +9,5 @@
     <li> <%= e.title%> - <%= e.date %> - <%= e.notes %></li>
   <% end %>
 </ul>
-
 
 <% end %>

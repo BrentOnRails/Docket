@@ -230,7 +230,11 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   config.omniauth :google_oauth2, ENV["GOOGLE_API_KEY"], ENV["GOOGLE_SECRET"], {
-    name: "google"
+    name: "google",
+    scope: "userinfo.email, userinfo.profile, plus.me",
+    prompt: "select_account",
+    image_aspect_ratio: "square",
+    image_size: 50
   }
 
   # ==> Warden configuration
