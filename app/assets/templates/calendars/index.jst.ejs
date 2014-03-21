@@ -1,0 +1,28 @@
+<h1 class="well well-lrg"> Docket - Calendars <Br><a href="/#calendars/new" class="btn btn-primary"> Add New Calendar </a></h1>
+
+<% if (calendars.length > 0) { %>
+
+  <% calendars.each(function (cal) { %>
+  <div class="btn-group">
+    <button type="button" class="btn btn-danger">
+    <span class="glyphicon glyphicon-calendar"></span>
+     <%= cal.escape("title") %></button>
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#">Toggle</a></li>
+      <li><a href="#">Edit</a></li>
+      <li><a href="#">Share</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Delete</a></li>
+    </ul>
+  </div>
+
+  <% }) %>
+
+<% } else { %>
+  You have no calendars <br>
+<% } %>
+

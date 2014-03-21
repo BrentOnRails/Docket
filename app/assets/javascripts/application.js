@@ -4,8 +4,8 @@
 //= require jquery.serializeJSON
 //= require jquery.ui.sortable
 //= require jquery_ujs
-//= require bootstrap
 //= require underscore
+//= require bootstrap
 //= require backbone
 //= require docket
 //= require_tree ../templates
