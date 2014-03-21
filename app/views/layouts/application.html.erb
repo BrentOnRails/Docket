@@ -43,12 +43,11 @@
 
           <li class="dropdown">
             <% if user_signed_in? %>
-
             <a href="#" class="dropdown-toggle"
             data-toggle="dropdown">
             <% if current_user.name %>
+            <%= image_tag avatar_url(current_user), id: "avatar" %>
             <%= current_user.name %>
-
             <% else %>
             <%= current_user.email %>
             <% end %>
