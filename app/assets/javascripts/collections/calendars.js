@@ -1,5 +1,9 @@
 Docket.Collections.Calendars = Backbone.Collection.extend({
-  url: 'calendars',
-  model: Docket.Models.Calendar
+  model: Docket.Models.Calendar,
+  url: '/calendars',
+
+  comparator: function(calendar) {
+    return calendar.get('id');
+  }
 
 });

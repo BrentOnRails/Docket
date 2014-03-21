@@ -6,8 +6,11 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
   },
 
   routes: {
+    "" : "index",
     "calendars" : "index",
-    "calendars/new" : "new"
+    "calendars/new" : "new",
+    "calendars/:id/edit" : "edit",
+    "calendars:/:id/delete" : "delete"
   },
 
 
@@ -26,7 +29,21 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
       model: newCalendar
     })
 
-    _swapView(newView);
+    this._swapView(newView);
+  },
+
+  edit: function (id) {
+    var that = this;
+    this._getCalendar(id, function (calendar) {
+      var editView = new Docket.Views.CalendarForm({
+        collection: that.calendars,
+        model: calendar
+      })
+
+    that._swapView(editView);
+  });
+
+
   },
 
 
@@ -34,5 +51,24 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el)
+  },
+
+  _getCalendar: function(id, callback){
+    var that = this;
+    var calendar = Docket.calendars.get(id);
+    if (!calendar) {
+      calendar = new Docket.Models.Calendar({
+        id: id
+      });
+      calendar.collection = this.calendars;
+      calendar.fetch({
+        success: function () {
+          that.calendars.add(calendar);
+          callback(calendar);
+        }
+      });
+    } else {
+      callback(calendar);
+    }
   }
 });
