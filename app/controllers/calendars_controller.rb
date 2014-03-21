@@ -8,7 +8,7 @@ class CalendarsController < ApplicationController
   def create
     @calendar = current_user.calendars.build(calendar_params)
     if @calendar.save
-      render json: @calender
+      render json: @calendar
     else
       render json: { errors: @board.errors.full_messages }, status: 422
     end
