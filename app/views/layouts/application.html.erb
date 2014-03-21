@@ -65,9 +65,6 @@
             <ul class="dropdown-menu">
               <li><%= link_to "Sign In", new_user_session_url %></li>
               <li><%= link_to "Sign Up", new_user_registration_url %></li>
-						  <%- resource_class.omniauth_providers.each do |provider| %>
-						    <li><%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: 'btn btn-danger'%></li>
-								<% end %>
 
             </ul>
             <% end %>
