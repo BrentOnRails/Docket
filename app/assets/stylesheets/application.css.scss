@@ -15,7 +15,7 @@
 @import "bootstrap";
 
 body {
-  padding-top: 70px;
+  padding-top: 100px;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -27,11 +27,7 @@ body {
   border-radius: 150px;
 }
 
-//.calendar-button {
-////  TODO: CHANGE COLORS HERE BASED ON CALENDAR LABEL COLOR;
-////  @mixin button-variant(gray, black, black)
-//  color: grey;
-//  background-color: black;
-//  border-color: black;
-//
-//}
+.btn-inverse {
+  @include button-variant($navbar-inverse-brand-color, $navbar-inverse-bg, $navbar-inverse-border);
+}
+

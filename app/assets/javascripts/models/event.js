@@ -1,4 +1,4 @@
-Docket.Models.Calendar = Backbone.Model.extend({
+Docket.Models.Event = Backbone.Model.extend({
   urlRoot: "/calendars",
 
   entries: function () {

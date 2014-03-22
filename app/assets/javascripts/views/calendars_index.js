@@ -3,7 +3,7 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
   template: JST['calendars/index'],
 
   events: {
-    "click #delete-calendar" : "destroyCalendar"
+    "click .delete-calendar" : "destroyCalendar"
   },
 
   initialize: function () {
@@ -21,6 +21,12 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
 
     return this;
   },
+
+  destroyCalendar: function (event) {
+    var id = $(event.target).data("id")
+    var cal =  Docket.calendars.get(id)
+    cal.destroy();
+  }
 
 
 

@@ -2,12 +2,12 @@
 
 <% if (calendars.length > 0) { %>
 
-  <% calendars.each(function (cal) { %>
+  <% calendars.each(function (calendar) { %>
   <div class="btn-group">
 
     <button type="button" class="btn btn-inverse">
     <span class="glyphicon glyphicon-calendar"></span>
-     <%= cal.escape("title") %></button>
+     <%= calendar.escape("title") %></button>
 
     <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>
@@ -15,16 +15,33 @@
     </button>
     <ul class="dropdown-menu" role="menu">
       <li><a href="#">Toggle</a></li>
-      <li><a href="#calendars/<%= cal.escape("id") %>/edit">Edit</a></li>
+      <li><a href="#calendars/<%= calendar.escape("id") %>/edit">Edit</a></li>
       <li><a href="#">Share</a></li>
       <li class="divider"></li>
-      <li id="delete-calendar"><a href="#">Delete</a></li>
+      <li><a data-id="<%= calendar.escape("id")%>" class="delete-calendar" href="#">Delete</a></li>
     </ul>
   </div>
 
+
+
+
+  <% }) %>
+  <br>
+  <% calendars.each(function (calendar) { %>
+    <% calendar.entries().each(function(entry) { %>
+    <%= entry.escape("title") %> <br>
+    <%= entry.escape("notes") %> <br>
+    <%= entry.escape("date") %> <br>
+    <% }) %>
   <% }) %>
 
 <% } else { %>
   You have no calendars <br>
 <% } %>
+
+
+
+
+
+
 

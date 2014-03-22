@@ -77,9 +77,7 @@
   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
 
-.btn-inverse {
-  @include button-variant($navbar-inverse-brand-color, $navbar-inverse-bg, $navbar-inverse-border);
-}
+
 
 
 // Link buttons
