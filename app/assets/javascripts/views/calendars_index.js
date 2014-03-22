@@ -7,7 +7,7 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.collection, "add change:title remove reset", this.render);
+    this.listenTo(this.collection, "add change:title remove reset destroy", this.render);
   },
 
   render: function () {
@@ -25,7 +25,10 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
   destroyCalendar: function (event) {
     var id = $(event.target).data("id")
     var cal =  Docket.calendars.get(id)
-    cal.destroy();
+    result = window.confirm("Delete Calendar?")
+    if (result == true) {
+      cal.destroy();
+    }
   }
 
 
