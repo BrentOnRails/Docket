@@ -49,6 +49,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     when "Google"
       uid = access_token['uid']
       email = access_token[:info][:email]
+      name = access_token[:info][:name]
+      avatar_url = access_token[:info][:image]
       auth_attr = { :uid => uid,
                     :token => access_token['credentials']['token'],
                     :secret => nil,
@@ -61,11 +63,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
     if resource.nil?
       if email
-        user = find_for_oauth_by_email(email, resource)
+        user = find_for_oauth_by_email(email, resource, name, avatar_url)
       elsif uid && name
         user = find_for_oauth_by_uid(uid, resource)
         if user.nil?
-          user = find_for_oauth_by_name(name, resource)
+          user = find_for_oauth_by_name(name, resource, avatar_url)
         end
       end
     else
@@ -90,21 +92,29 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     return user
   end
 
-  def find_for_oauth_by_email(email, resource=nil)
+  def find_for_oauth_by_email(email, resource=nil, name, avatar_url)
     if user = User.find_by_email(email)
       user
     else
-      user = User.new(:email => email, :password => Devise.friendly_token[0,20])
+      user = User.new(:email => email,
+                      :password => Devise.friendly_token[0,20],
+                      name: name,
+                      avatar_url: avatar_url
+      )
       user.save
     end
     return user
   end
 
-  def find_for_oauth_by_name(name, resource=nil)
+  def find_for_oauth_by_name(name, resource=nil, avatar_url)
     if user = User.find_by_name(name)
       user
     else
-      user = User.new(:name => name, :password => Devise.friendly_token[0,20], :email => "#{UUIDTools::UUID.random_create}@host")
+      user = User.new(:name => name, 
+                      :password => Devise.friendly_token[0,20],
+                      :email => "#{UUIDTools::UUID.random_create}@host",
+                      :avatar_url => avatar_url
+      )
       user.save :validate => false
     end
     return user

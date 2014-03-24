@@ -15,6 +15,8 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  name                   :string(255)
+#  avatar_url             :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -31,11 +33,13 @@ class User < ActiveRecord::Base
    def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
        data = access_token.info
        user = User.where(:email => data["email"]).first
+       
 
        unless user
            user = User.create(name: data["name"],
                 email: data["email"],
-                password: Devise.friendly_token[0,20]
+                password: Devise.friendly_token[0,20],
+                name: data["name"]
                )
        end
        user

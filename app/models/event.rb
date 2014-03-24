@@ -3,13 +3,12 @@
 # Table name: events
 #
 #  id          :integer          not null, primary key
-#  datetime    :datetime
+#  date        :date
 #  title       :string(255)
 #  notes       :text
 #  calendar_id :integer
 #  created_at  :datetime
 #  updated_at  :datetime
-#  date        :date
 #
 
 class Event < ActiveRecord::Base

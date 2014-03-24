@@ -1,4 +1,4 @@
-<h1 class="well well-lrg"> Docket - Calendars <Br><a href="/#calendars/new" class="btn btn-primary"> Add New Calendar </a></h1>
+<div class="well well-lrg"><h2> Docket - Calendars </h2><Br><a href="/#calendars/new" class="btn btn-primary"> Add New Calendar </a>
 
 <% if (calendars.length > 0) { %>
 
@@ -21,11 +21,12 @@
       <li><a data-id="<%= calendar.escape("id")%>" class="delete-calendar" href="#">Delete</a></li>
     </ul>
   </div>
-
-
-
-
   <% }) %>
+	
+</div> 
+
+
+
 	
 
   <br>
