@@ -29,21 +29,26 @@
 
 
 
+
+
+
 	<% var dates = [] %>
   <% entries.each(function(entry) { %>
 
 	  <% if(_.indexOf(dates, entry.escape("date"), true) == -1) { %>
-			<h3><%= entry.escape("date") %> </h3><br>
+			<h4><%= entry.escape("date") %> </h4><br>
 		<% } %>
-    <div class="well well-sm">
-    <%= entry.escape("title") %> <br>
-    <%= entry.escape("notes") %> <br>
-		<%= calendars.get(entry.escape("calendar_id")).escape("title") %> <br>
-		 <% dates.push(entry.escape("date")) %>
+    <div class="panel panel-inverse">
 
-     <a href="#entries/<%= entry.escape('id')%>/edit" >Edit</a>
+      <div class="panel-heading"><%= entry.escape("title") %></div>
+      <div class="panel-body">
+        Notes: <%= entry.escape("notes") %> <Br>
+		    Calendar: <%= calendars.get(entry.escape("calendar_id")).escape("title") %> <br>
+		    <% dates.push(entry.escape("date")) %>
 
-    <a data-id="<%= entry.escape("id")%>" data-calendar-id ="<%= entry.escape("calendar_id") %>" class="delete-event" href="#">Delete</a></li>
+        <a href="#entries/<%= entry.escape('id')%>/edit" >Edit</a> -
+        <a data-id="<%= entry.escape("id")%>" data-calendar-id ="<%= entry.escape("calendar_id") %>" class="delete-event" href="#">Delete</a></li>
+      </div>
     </div>
  <% }) %>
 

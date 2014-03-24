@@ -32,3 +32,10 @@ body {
   @include button-variant($navbar-inverse-brand-color, $navbar-inverse-bg, $navbar-inverse-border);
 }
 
+.panel-inverse {
+  @include panel-variant($navbar-inverse-brand-color, $navbar-inverse-brand-color, $navbar-inverse-bg, $navbar-inverse-border);
+}
+
+
+//$border, $heading-text-color, $heading-text-colorading-bg-color, $heading-border
+
