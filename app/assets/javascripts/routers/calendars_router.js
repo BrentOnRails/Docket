@@ -11,7 +11,8 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
     "calendars" : "index",
     "calendars/new" : "new",
     "calendars/:id/edit" : "edit",
-    "events/new" : "newEvent"
+    "entries/new" : "newEvent",
+    "entries/:id/edit" : "editEntry"
   },
 
 
@@ -41,6 +42,39 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
     })
 
     this._swapView(newView);
+  },
+
+
+  _getEntry: function (id, callback){
+    var that = this;
+    var entry = Docket.entries.get(id);
+    if (!entry){
+      entry = new Docket.Models.Events({
+        id: id
+      });
+      entry.collection = this.entries;
+      entry.fetch({
+        success: function () {
+          that.entries.add(entry);
+          callback(entry)
+        }
+      });
+    } else {
+      callback(entry);
+    }
+  },
+
+  editEntry: function (id) {
+    var that = this;
+    this._getEntry(id, function(entry) {
+      var editView = new Docket.Views.EventForm({
+        collection: that.calendars,
+        model: entry
+      })
+
+    that._swapView(editView);
+    });
+
   },
 
   edit: function (id) {

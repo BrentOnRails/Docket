@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    @event.update_attributes(calendar_params)
+    @event.update_attributes(event_params)
 
     if @event.save
       render json: @event
