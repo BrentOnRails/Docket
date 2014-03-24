@@ -9,15 +9,16 @@ Docket.Models.Calendar = Backbone.Model.extend({
     }
 
     return this._entries
-  },
-
-
-  parse: function (jsonResp) {
-    if (jsonResp.events) {
-      this.entries().set(jsonResp.events);
-      delete jsonResp.events;
-    }
-
-    return jsonResp;
   }
+
+
+  // parse: function (jsonResp) {
+  //   if (jsonResp.events) {
+  //     this.entries().set(jsonResp.events);
+  //     Docket.entries.set(jsonResp.events);
+  //     delete jsonResp.events;
+  //   }
+  //
+  //   return jsonResp;
+  // }
 });

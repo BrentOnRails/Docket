@@ -1,0 +1,39 @@
+<div class="form-group">
+  <div>
+    <label>Date
+      <br><input type="date" name='event[date]' value='<%= event.escape('date') %>'>
+    </label>
+  </div>
+
+<div>
+<label> Select a time:
+<input type="time" name="event[time]">
+</label>
+
+<div>
+<label>Title
+<br><input type='text' name='event[title]' value='<%= event.escape('title') %>'>
+</label>
+
+
+
+<label>Notes
+<br><input type='text' name='event[notes]' value='<%= event.escape('notes') %>'>
+</label>
+</div>
+
+<div>
+  <label>Calendar
+    <br><select name='event[calendar_id]'>
+      <% calendars.each(function(calendar) { %>
+        <option value="<%= calendar.id %>"><%= calendar.escape('title') %></option>
+      <% }) %>
+      </select>
+  </label>
+</div>
+
+
+</label><br><button class="btn btn-primary">Submit</button>
+<br>
+<a href='#/'>Back</a>
+</div>

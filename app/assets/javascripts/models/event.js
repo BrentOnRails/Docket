@@ -1,16 +1,16 @@
 Docket.Models.Event = Backbone.Model.extend({
-  urlRoot: "/calendars",
+  urlRoot: "/events",
 
-  parse: function (jsonResp) {
-    if (jsonResp.events) {
-      this.entries().set(jsonResp.events);
-      delete jsonResp.events;
-    }
+  // parse: function (jsonResp) {
+  //   if (jsonResp.events) {
+  //     this.entries().set(jsonResp.events);
+  //     delete jsonResp.events;
+  //   }
+  //
+  //   return jsonResp;
+  // },
 
-    return jsonResp;
-  },
-	
-  comparator: function(calendar) {
+  comparator: function(event) {
     return event.get('date');
   }
 });

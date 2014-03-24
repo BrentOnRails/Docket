@@ -36,12 +36,13 @@ ActiveRecord::Schema.define(version: 20140321004916) do
   end
 
   create_table "events", force: true do |t|
-    t.date     "date"
+    t.datetime "datetime"
     t.string   "title"
     t.text     "notes"
     t.integer  "calendar_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
   end
 
   create_table "users", force: true do |t|

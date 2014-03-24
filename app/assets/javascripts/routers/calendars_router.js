@@ -2,7 +2,8 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
 
   initialize: function (options) {
     this.$rootEl = options.$rootEl,
-    this.calendars = options.calendars
+    this.calendars = options.calendars,
+    this.entries = options.entries
   },
 
   routes: {
@@ -10,7 +11,7 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
     "calendars" : "index",
     "calendars/new" : "new",
     "calendars/:id/edit" : "edit",
-    "calendars:/:id/delete" : "delete"
+    "events/new" : "newEvent"
   },
 
 
@@ -27,6 +28,16 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
     var newView = new Docket.Views.CalendarForm({
       collection: this.calendars,
       model: newCalendar
+    })
+
+    this._swapView(newView);
+  },
+
+  newEvent: function () {
+    var newEvent = new Docket.Models.Event();
+    var newView = new Docket.Views.EventForm({
+      collection: this.calendars,
+      model: newEvent
     })
 
     this._swapView(newView);

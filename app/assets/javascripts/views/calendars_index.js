@@ -3,16 +3,19 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
   template: JST['calendars/index'],
 
   events: {
-    "click .delete-calendar" : "destroyCalendar"
+    "click .delete-calendar" : "destroyCalendar",
+    "click .delete-event" : "destroyEvent"
   },
 
   initialize: function () {
-    this.listenTo(this.collection, "add change:title remove reset destroy", this.render);
+    this.listenTo(Docket.calendars, "all", this.render);
+    this.listenTo(Docket.entries, "all", this.render);
   },
 
   render: function () {
     var renderedContent = this.template({
-      calendars: this.collection
+      calendars: Docket.calendars,
+      entries: Docket.entries
     });
 
 
@@ -29,10 +32,19 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
     if (result == true) {
       cal.destroy();
     }
+  },
+
+  destroyEvent: function (event) {
+    that = this;
+    var id = $(event.target).data("id");
+    var entry = Docket.entries.get(id);
+    result = window.confirm("Delete Entry?")
+    if (result == true) {
+      Docket.entries.remove(entry);
+      entry.destroy();
+      // that.render();
+    }
   }
-
-
-
 
 
 });

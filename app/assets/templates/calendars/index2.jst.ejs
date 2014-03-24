@@ -29,8 +29,21 @@
 
 
 
+
+
+  <br>
+	<% var entries = [] %>
+	<% calendars.each(function(calendar) { %>
+	  <%  calendar.entries().each(function (entry) { %>
+				<% entries.push(entry) %>
+			<% }) %>
+	<% }) %>
+
+	<% entries = _.sortBy(entries, function(entry) { return entry.escape("date") }) %>
+
+
 	<% var dates = [] %>
-  <% entries.each(function(entry) { %>
+  <% _(entries).each(function(entry) { %>
 
 	  <% if(_.indexOf(dates, entry.escape("date"), true) == -1) { %>
 			<h3><%= entry.escape("date") %> </h3><br>

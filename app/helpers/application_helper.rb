@@ -6,7 +6,9 @@ module ApplicationHelper
 
       gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
 
-      "http://gravatar.com/avatar/#{gravatar_id}.png"
+      user.avatar_url = "http://gravatar.com/avatar/#{gravatar_id}.png"
+      user.save
+      user.avatar_url
     end
   end
 

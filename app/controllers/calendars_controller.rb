@@ -10,7 +10,7 @@ class CalendarsController < ApplicationController
     if @calendar.save
       render json: @calendar
     else
-      render json: { errors: @board.errors.full_messages }, status: 422
+      render json: { errors: @calendar.errors.full_messages }, status: 422
     end
   end
 
