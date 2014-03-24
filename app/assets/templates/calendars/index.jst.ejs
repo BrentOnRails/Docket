@@ -26,22 +26,33 @@
 
 
   <% }) %>
+	
+
   <br>
-  <% calendars.each(function (calendar) { %>
-    <% calendar.entries().each(function(entry) { %>
+	<% var entries = [] %>
+	<% calendars.each(function(calendar) { %>
+	  <%  calendar.entries().each(function (entry) { %>
+				<% entries.push(entry) %>
+			<% }) %>
+	<% }) %>
+
+	<% entries = _.sortBy(entries, function(entry) { return entry.escape("date") }) %>
+
+	
+	<% var dates = [] %>
+  <% _(entries).each(function(entry) { %>
+		
+	  <% if(_.indexOf(dates, entry.escape("date"), true) == -1) { %>
+			<h3><%= entry.escape("date") %> </h3><br>
+		<% } %>
     <%= entry.escape("title") %> <br>
     <%= entry.escape("notes") %> <br>
-    <%= entry.escape("date") %> <br>
-    <% }) %>
-  <% }) %>
+		<%= calendars.get(entry.escape("calendar_id")).escape("title") %> <br>
+		 <% dates.push(entry.escape("date")) %> 
+ <% }) %>
+ 
+ 
 
 <% } else { %>
   You have no calendars <br>
 <% } %>
-
-
-
-
-
-
-
