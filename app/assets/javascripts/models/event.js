@@ -11,6 +11,6 @@ Docket.Models.Event = Backbone.Model.extend({
   // },
 
   comparator: function(event) {
-    return event.get('date');
+    return event.get('datetime');
   }
 });

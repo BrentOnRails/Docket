@@ -3,7 +3,7 @@ Docket.Collections.Events = Backbone.Collection.extend({
   url: '/events',
 
   comparator: function(event) {
-    return event.get('date');
+    return [event.get('date'), event.get('time')];
   }
 
 });

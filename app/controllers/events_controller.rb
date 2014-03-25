@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
+  require 'time'
   before_filter :authenticate_user!
+
 
   def index
     @events = current_user.events
@@ -8,7 +10,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    # @calendar = Calendar.find(event_params[:calendar_id])
     @event = Event.new(event_params)
     if @event.save
       render json: @event
@@ -40,7 +41,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:title, :notes, :date, :calendar_id)
+    params.require(:event).permit(:title, :notes, :calendar_id, :date)
   end
 
 end
