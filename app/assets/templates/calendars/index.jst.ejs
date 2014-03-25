@@ -1,9 +1,10 @@
 <div class="well well-lrg"><h2> Docket - Calendars </h2>
-<a href="/#calendars/new" class="btn btn-primary"> Add New Calendar </a>
-<a href="/#entries/new" class="btn btn-primary"> Add New Event </a><br><br>
 
+
+
+
+<a href="/#calendars/new" class="btn btn-inverse"><span class="glyphicon glyphicon-calendar"></span>  </a>
 <% if (calendars.length > 0) { %>
-
   <% calendars.each(function (calendar) { %>
   <div class="btn-group">
 
@@ -25,9 +26,11 @@
   </div>
   <% }) %>
 
+
 </div>
 
 
+<a href="/#entries/new" class="btn btn-primary"> Add New Event </a><br><br>
 
 
 
@@ -38,9 +41,11 @@
 	  <% if(_.indexOf(dates, entry.escape("date"), true) == -1) { %>
 			<h4><%= entry.escape("date") %> </h4><br>
 		<% } %>
-    <div class="panel panel-inverse">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-inverse">
+      <div class="panel-heading"><a data-toggle="collapse" data-parent="accordion" href="#collapse<%= entry.id %>"><%= entry.escape("title") %></a></div>
 
-      <div class="panel-heading"><%= entry.escape("title") %></div>
+      <div id="collapse<%= entry.id%>" class="panel-collapse collapse in">
       <div class="panel-body">
         Notes: <%= entry.escape("notes") %> <Br>
 		    Calendar: <%= calendars.get(entry.escape("calendar_id")).escape("title") %> <br>
@@ -49,11 +54,59 @@
         <a href="#entries/<%= entry.escape('id')%>/edit" >Edit</a> -
         <a data-id="<%= entry.escape("id")%>" data-calendar-id ="<%= entry.escape("calendar_id") %>" class="delete-event" href="#">Delete</a></li>
       </div>
+      </div>
     </div>
  <% }) %>
 
+<div>
 
 
 <% } else { %>
   You have no calendars <br>
 <% } %>
+
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Collapsible Group Item #1
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Collapsible Group Item #2
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>

@@ -36,6 +36,12 @@ body {
   @include panel-variant($navbar-inverse-brand-color, $navbar-inverse-brand-color, $navbar-inverse-bg, $navbar-inverse-border);
 }
 
+#content{
+  width: 66%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 //$border, $heading-text-color, $heading-text-colorading-bg-color, $heading-border
 
