@@ -1,4 +1,4 @@
-<div class="well well-lrg"><h2> Docket - Calendars </h2>
+<div class="jumbotron"><h1> <span class="glyphicon glyphicon-briefcase"></span> Docket  </h1>
 
 
 
@@ -32,27 +32,60 @@
 
 <a href="/#entries/new" class="btn btn-primary"> Add New Event </a><br><br>
 
+<ul class="nav nav-pills nav-justified navbar-inverse">
+  <li id="all"><a href="#">All Plans</a></li>
+  <li id="today"><a href="#today">Today</a></li>
+  <li id="week"><a href="#week">Week</a></li>
+  <li id="month"><a href="#month">Month</a></li>
+</ul>
 
 
 
-	<% var dates = [] %>
   <% entries.each(function(entry) { %>
-
-	  <% if(_.indexOf(dates, entry.escape("date"), true) == -1) { %>
-			<h4><%= entry.escape("date") %> </h4><br>
-		<% } %>
     <div class="panel-group" id="accordion">
       <div class="panel panel-inverse">
-      <div class="panel-heading"><a data-toggle="collapse" data-parent="accordion" href="#collapse<%= entry.id %>"><%= entry.escape("title") %></a></div>
+      <div class="panel-heading">
+      <a class="togglelink" data-toggle="collapse" data-parent="accordion" href="#collapse<%= entry.id %>">
 
-      <div id="collapse<%= entry.id%>" class="panel-collapse collapse in">
-      <div class="panel-body">
+      <% if(entry.escape("date")){ %>
+      <% var d = new Date(entry.escape("date")) %>
+
+      <% var weekdays = new Array(); weekdays[0] = "Sunday"; weekdays[1] = "Monday"; weekdays[2] = "Tuesday"; weekdays[3] = "Wednesday"; weekdays[4] = "Thursday"; weekdays[5] = "Friday"; weekdays[6] = "Saturday"; %>
+
+      <% var months = new Array(); months[0] = "January"; months[1] = "February"; months[2] = "March"; months[3] = "April"; months[4] = "May"; months[5] = "June"; months[6] = "July"; months[7] = "August"; months[8] = "September"; months[9] = "October"; months[10] = "November"; months[11] = "Decemeber"; %>
+
+      <% var dd =  d.getDate()+ 1 %>
+      <% var mm = d.getMonth() %>
+      <% var ww = d.getDay()+1 %>
+
+      <div class="date-holder">
+        <span class="day"><%= dd %></span>
+        <div class="week-month">
+          <span class="month"><%= months[mm] %></span>
+          <span class="weekday"><%= weekdays[ww] %></span>
+        </div>
+      </div>
+  <% } else { %>
+    <div class="date-holder">
+      <span class="glyphicon glyphicon-send"></span>
+      <div class="week-month">Plan</div>
+    </div>
+  <% } %>
+
+      <% entry.escape("date_string") %>
+      <%= entry.escape("title") %></a>
+
+    </div>
+
+      <div id="collapse<%= entry.id%>" class="panel-collapse collapse">
+      <div class="panel-body panel-entries">
         Notes: <%= entry.escape("notes") %> <Br>
 		    Calendar: <%= calendars.get(entry.escape("calendar_id")).escape("title") %> <br>
-		    <% dates.push(entry.escape("date")) %>
 
         <a href="#entries/<%= entry.escape('id')%>/edit" >Edit</a> -
         <a data-id="<%= entry.escape("id")%>" data-calendar-id ="<%= entry.escape("calendar_id") %>" class="delete-event" href="#">Delete</a></li>
+
+
       </div>
       </div>
     </div>

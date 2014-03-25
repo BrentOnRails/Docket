@@ -7,21 +7,22 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
     "click .delete-event" : "destroyEvent"
   },
 
-  initialize: function () {
-    this.listenTo(Docket.calendars, "all", this.render);
-    this.listenTo(Docket.entries, "all", this.render);
+  initialize: function (options) {
+    this.listenTo(Docket.calendars, "sync add remove change:title", this.render);
+    this.listenTo(Docket.entries, "sync add remove change:title", this.render);
+    this.active = options.active
   },
 
   render: function () {
     var renderedContent = this.template({
       calendars: Docket.calendars,
-      entries: Docket.entries
+      entries: this.collection
     });
 
 
 
     this.$el.html(renderedContent);
-
+    this.$(this.active).attr("class","active");
     return this;
   },
 

@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   require 'time'
+  require 'date'
   before_filter :authenticate_user!
 
 
@@ -21,7 +22,6 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.update_attributes(event_params)
-
     if @event.save
       render json: @event
     else

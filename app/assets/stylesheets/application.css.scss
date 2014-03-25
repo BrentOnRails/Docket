@@ -34,12 +34,44 @@ body {
 
 .panel-inverse {
   @include panel-variant($navbar-inverse-brand-color, $navbar-inverse-brand-color, $navbar-inverse-bg, $navbar-inverse-border);
+  border:2px solid;
 }
 
 #content{
   width: 66%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.togglelink{
+  color: $navbar-inverse-brand-color;
+}
+
+.panel-entries {
+  background: $jumbotron-bg;
+}
+
+.day {
+  font-size: 20px;
+}
+
+.month {
+  font-size: 10px;
+  display: block;
+}
+
+.weekday {
+  font-size: 10px;
+  display: block;
+}
+
+.week-month{
+  width: 100px;
+  display: inline-block;
+}
+
+.date-holder{
+  display: inline;
 }
 
 
