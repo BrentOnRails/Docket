@@ -4,9 +4,13 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
 
   calDelete: JST['partials/_calDelete'],
 
+  entryDelete: JST['partials/_entryDelete'],
+
+  calForm: JST['calendars/form'],
+
   events: {
     "click .delete-calendar" : "deleteCalendarPrompt",
-    "click .delete-event" : "deleteEventPrompt",
+    "click .delete-event" : "deleteEntryPrompt",
   },
 
   initialize: function (options) {
@@ -28,6 +32,7 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
     return this;
   },
 
+
   deleteCalendarPrompt: function(event) {
     var id = $(event.target).data("id");
     var cal = Docket.calendars.get(id);
@@ -47,9 +52,22 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
 
   },
 
-  deleteEventPrompt: function(event) {
+  deleteEntryPrompt: function(event) {
     var id = $(event.target).data("id");
     var entry = Docket.entries.get(id);
+    var that = this;
+    var renderedContent = this.entryDelete({
+      id: id,
+      entry: entry
+    });
+
+
+    $(".application-lg-modal .modal-content").html(renderedContent)
+    $(".application-lg-modal").modal("show");
+    $(".confirm-delete-entry").on("click", function(event){
+      that.destroyEvent(event);
+      $(".application-lg-modal").modal("hide");
+    });
 
   },
 
@@ -65,12 +83,8 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
     that = this;
     var id = $(event.target).data("id");
     var entry = Docket.entries.get(id);
-    result = window.confirm("Delete Entry?")
-    if (result == true) {
       Docket.entries.remove(entry);
       entry.destroy();
-      // that.render();
-    }
   }
 
 });

@@ -10,6 +10,8 @@
 #
 
 class Calendar < ActiveRecord::Base
+  validates :title, presence: true
+
   belongs_to :user
   has_many :events, dependent: :destroy
 end

@@ -1,9 +1,28 @@
-<div class="jumbotron hero">
-<label>Title
-<br><input type='text' name='calendar[title]' value='<%= calendar.escape('title') %>'>
-</label>
-<br>
-</label><br><button class="btn btn-primary">Submit</button>
-<br>
-<a href='#/'>Back</a>
+
+
+
+<div class="modal-header navbar-inverse">
+  <button type="button" class="close modal-close" data-dismiss="modal"
+  aria-hidden="true">×</button>
+  <% if (calendar.get("title")){ %>
+  <h1 class="modal-title lighten-inverse" id="myLargeModalLabel">Edit Calendar</h1>
+  <% } else { %>
+  <h1 class="modal-title lighten-inverse" id="myLargeModalLabel">Create Calendar</h1>
+  <% } %>
+</div>
+<!-- Body -->
+<div class="modal-body">
+  <div class="jumbotron hero navbar-inverse">
+    <label>Title
+      <br><input type='text' name='calendar[title]' value='<%= calendar.escape('title') %>'>
+    </label>
+    <br>
+  </label><br><button class="btn btn-primary form-submit-btn btn-inverse">Submit</button>
+  <br>
+</div>
+</div>
+<!-- Footer -->
+<div class="modal-footer">
+  <button type="button" class="close modal-close" data-dismiss="modal"><a href='#/'>Back</a></button>
+
 </div>

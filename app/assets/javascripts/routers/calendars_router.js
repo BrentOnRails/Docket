@@ -15,7 +15,7 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
     "month" : "month",
     "missed" : "missed",
     "calendars/:id/edit" : "edit",
-    "entries/new" : "newEvent",
+    "entries/new" : "newEntry",
     "entries/:id/edit" : "editEntry"
   },
 
@@ -36,17 +36,22 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
       model: newCalendar,
     })
 
-    this._swapView(newView);
+    this._modalNew(newView)
   },
 
-  newEvent: function () {
+  _modalNew: function(view) {
+    $(".application-lg-modal .modal-content").html(view.render().$el)
+    $(".application-lg-modal").modal("show");
+  },
+
+  newEntry: function () {
     var newEvent = new Docket.Models.Event();
     var newView = new Docket.Views.EventForm({
       collection: this.calendars,
       model: newEvent
     })
 
-    this._swapView(newView);
+    this._modalNew(newView);
   },
 
 
@@ -77,7 +82,7 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
         model: entry
       })
 
-    that._swapView(editView);
+    that._modalNew(editView);
     });
 
   },
@@ -90,7 +95,7 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
         model: calendar
       })
 
-    that._swapView(editView);
+    that._modalNew(editView);
     });
 
 

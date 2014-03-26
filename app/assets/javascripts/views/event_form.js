@@ -26,6 +26,7 @@ Docket.Views.EventForm = Backbone.View.extend({
     this.model.save(attrs, {
       success: function(entry) {
         Docket.entries.add(entry);
+        $(".application-lg-modal").modal("hide");
         Backbone.history.navigate("", { trigger: true });
       }
 

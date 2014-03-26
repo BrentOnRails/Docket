@@ -1,4 +1,18 @@
-<div class="jumbotron hero">
+
+
+
+<div class="modal-header navbar-inverse">
+  <button type="button" class="close modal-close" data-dismiss="modal"
+  aria-hidden="true">×</button>
+  <% if (event.get("title")){ %>
+  <h1 class="modal-title lighten-inverse" id="myLargeModalLabel">Edit Calendar</h1>
+  <% } else { %>
+  <h1 class="modal-title lighten-inverse" id="myLargeModalLabel">Create Calendar</h1>
+  <% } %>
+</div>
+<!-- Body -->
+<div class="modal-body">
+<div class="jumbotron hero hero navbar-inverse">
 <div class="form-group">
   <div>
 
@@ -31,6 +45,12 @@
 
 </label><br><button class="btn btn-primary">Submit</button>
 <br>
-<a href='#/'>Back</a>
 </div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="modal-footer">
+  <button type="button" class="close modal-close" data-dismiss="modal"><a href='#/'>Back</a></button>
+
 </div>

@@ -25,9 +25,9 @@ Docket.Views.CalendarForm = Backbone.View.extend({
     this.model.save(attrs, {
       success: function(calendar) {
         that.collection.add(calendar);
+        $(".application-lg-modal").modal("hide");
         Backbone.history.navigate("", { trigger: true });
       }
-
     });
   }
 
