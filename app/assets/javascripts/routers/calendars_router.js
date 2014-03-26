@@ -142,7 +142,10 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
 
   _diff: function(d1, d2) {
     var day = (1000*60*60*24);
-    var diff = Math.floor((d2.getTime()-d1.getTime())/(day));
+    var diff = Math.round((d2.getTime()-d1.getTime())/(day));
+		if (diff == -0){
+			diff = 0
+		}
     return diff;
   },
 
@@ -181,23 +184,17 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
         entry_date = new Date(p);
         if (entry.get("date") != null){
           var diff = that._diff(today, entry_date);
-					var day_diff = (entry_date.getDay() - today.getDay());
-          var day_same = (entry_date.getDay() == today.getDay());
-					var month_same = (entry_date.getMonth() == today.getMonth());
-					var year_same = (entry_date.getYear() == today.getYear());
+					
+					console.log(diff)				
+					var isToday = (diff == 0)
+					var isPast = (diff < 0 && !isToday)
 					if (offset == 0){
-						if (day_same && month_same && year_same){
+						if (isToday){
 							entries.push(entry);
 						}
-					} else if (offset == 7){
-						if (year_same && month_same && day_diff <= 7 && day_diff > 0){
+					} else if (diff > 0 && diff <= offset){
 							entries.push(entry);
-						}
-					} else if (offset == 31){
-						if (year_same && day_diff <= 31 && day_diff > 0){
-							entries.push(entry);
-						}
-					} else if (offset < 0 && day_diff < 0){
+					} else if (offset == -1 && isPast){
 						entries.push(entry);
 					}
         }
