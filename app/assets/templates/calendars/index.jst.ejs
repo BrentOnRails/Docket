@@ -43,31 +43,24 @@
   <% entries.each(function(entry) { %>
     <div class="panel-group" id="accordion">
       <div class="panel panel-inverse">
-      
-      
-      <div class="panel-heading" 
+
+
+      <div class="panel-heading"
 			<a class="togglelink" data-toggle="collapse" data-parent="accordion" href="#collapse<%= entry.id %>"
 			>
-      <% if(entry.escape("date")){ %>
-      <% var d = new Date(entry.escape("date")) %>
+      <% if(entry.get("date")){ %>
+      <% var d = moment(entry.get("date")) %>
 
-      <% var weekdays = new Array(); weekdays[0] = "Sunday"; weekdays[1] = "Monday"; weekdays[2] = "Tuesday"; weekdays[3] = "Wednesday"; weekdays[4] = "Thursday"; weekdays[5] = "Friday"; weekdays[6] = "Saturday"; %>
 
-      <% var months = new Array(); months[0] = "January"; months[1] = "February"; months[2] = "March"; months[3] = "April"; months[4] = "May"; months[5] = "June"; months[6] = "July"; months[7] = "August"; months[8] = "September"; months[9] = "October"; months[10] = "November"; months[11] = "Decemeber"; %>
-
-      <% var dd =  d.getDate()+ 1 %>
-      <% var mm = d.getMonth() %>
-      <% var ww = d.getDay() %>
+      <% var dd =  d.format("D") %>
+      <% var mm = d.format("MMMM") %>
+      <% var ww = d.format("dddd") %>
 
       <div class="date-holder">
-			  <% if (dd < 10){ %>
-				  <span class="day single-digit"><%= mm %></span>
-				<% } else { %>
-        <span class="day"><%= dd %></span>
-				<% } %>
-        <div class="week-month">
-          <span class="month"><%= months[mm] %></span>
-          <span class="weekday"><%= weekdays[ww] %></span>
+			   <span class="day"><%= dd %></span>
+				<div class="week-month">
+          <span class="month"><%= mm %></span>
+          <span class="weekday"><%= ww %></span>
         </div>
       </div>
   <% } else { %>
@@ -120,7 +113,7 @@ $(document).ready(function(){
           'placement': 'bottom',
           'title': "Click the Button to Create a New Calendar"
   });
-	
+
   $('#new-event').tooltip({
       'show': true,
           'placement': 'bottom',

@@ -14,3 +14,4 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree ./collections
+//= require moment

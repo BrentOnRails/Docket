@@ -46,7 +46,6 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
       entry.destroy();
       // that.render();
     }
-  },
-
+  }
 
 });
