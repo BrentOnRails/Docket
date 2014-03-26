@@ -184,11 +184,10 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
         entry_date = new Date(p);
         if (entry.get("date") != null){
           var diff = that._diff(today, entry_date);
-					console.log(diff)				
 					var isToday = (diff == 0)
 					var isPast = (diff < 0 && !isToday)
 					if (offset == 0){
-						if (isToday){
+						if (isToday && diff >= 0){
 							entries.push(entry);
 						}
 					} else if (diff > 0 && diff <= offset){

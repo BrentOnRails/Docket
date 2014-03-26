@@ -5,7 +5,6 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
-
 </head>
 <body>
 
@@ -75,12 +74,33 @@
   </nav>
 
   <% if notice %>
-  <p class="notice alert alert-success"><%= notice %></p>
+  <p class="notice alert alert-success fade in"><%= notice %> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></p>
   <% end %>
   <% if alert %>
-  <p class="alert alert alert-warning"><%= alert %></p>
+  <p class="alert alert alert-warning fade in"><%= alert %><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></p>
   <% end %>
+
+    <div class="modal fade application-lg-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <!--  Header -->
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h1 class="modal-title" id="myLargeModalLabel"></h1>
+            </div>
+            <!-- Body -->
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+  </div>
+  </div>
+
+
 <%= yield %>
 
 </body>
+
 </html>
+

@@ -2,9 +2,12 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
 
   template: JST['calendars/index'],
 
+  calAlert: JST['calendars/alert'],
+
   events: {
-    "click .delete-calendar" : "destroyCalendar",
-    "click .delete-event" : "destroyEvent"
+    "click .delete-calendar" : "deleteCalendarPrompt",
+    "click .delete-event" : "deleteEventPrompt",
+    "click .confirm-delete" : "destroyCalendar"
   },
 
   initialize: function (options) {
@@ -27,13 +30,33 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
     return this;
   },
 
+  deleteCalendarPrompt: function(event) {
+    var id = $(event.target).data("id");
+    var cal = Docket.calendars.get(id);
+    var renderedContent = this.calAlert({
+      id: id,
+      cal: cal
+    });
+
+    $(".application-lg-modal .modal-content").html(renderedContent)
+    $(".application-lg-modal").modal("show");
+
+  },
+
+  deleteEventPrompt: function(event) {
+    var id = $(event.target).data("id");
+    var entry = Docket.entries.get(id);
+    $(".application-lg-modal .modal-content").html(this.calAlert)
+    $(".application-lg-modal").model("show");
+    debugger
+  },
+
   destroyCalendar: function (event) {
-    var id = $(event.target).data("id")
-    var cal =  Docket.calendars.get(id)
-    result = window.confirm("Delete Calendar?")
-    if (result == true) {
-      cal.destroy();
-    }
+    var id = $(event.target).data("id");
+    var cal =  Docket.calendars.get(id);
+    cal.destroy();
+    // confirmed that this does remove from collection and should re-render
+
   },
 
   destroyEvent: function (event) {
