@@ -23,6 +23,7 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
 
     this.$el.html(renderedContent);
     this.$(this.active).attr("class","active");
+
     return this;
   },
 
@@ -45,7 +46,7 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
       entry.destroy();
       // that.render();
     }
-  }
+  },
 
 
 });

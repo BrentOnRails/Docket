@@ -13,6 +13,7 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
     "today" : "today",
     "week" : "week",
     "month" : "month",
+    "missed" : "missed",
     "calendars/:id/edit" : "edit",
     "entries/new" : "newEvent",
     "entries/:id/edit" : "editEntry"
@@ -128,6 +129,17 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
     this._swapView(monthView);
   },
 
+  missed: function() {
+    this.missed_entries = this._entryFilter(-1);
+
+    var missedView = new Docket.Views.CalendarsIndex({
+      collection: this.missed_entries,
+      active: "#missed"
+    });
+
+    this._swapView(missedView);
+  },
+
   _diff: function(d1, d2) {
     var day = (1000*60*60*24);
     var diff = Math.floor((d2.getTime()-d1.getTime())/(day));
@@ -168,13 +180,20 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
         var p = entry_date.setDate(entry_date.getDate() + 1)
         entry_date = new Date(p);
         if (entry.get("date") != null){
-          diff = that._diff(today, entry_date)
-        if (diff >= 0 && diff <= offset && entry_date.getDay() - today.getDay() <= offset) {
-            entries.push(entry)
+          diff = that._diff(today, entry_date);
+          day_diff = entry_date.getDay() - today.getDay();
+          if (offset >= 0 && diff >= 0 && diff <= offset && day_diff <= offset){
+            entries.push(entry);
+          } else if (offset < 0 && entry_date < today){
+            entries.push(entry);
+          } else if (day_diff == 0){
+            entries.push(entry);
           }
         }
       })
       return entries;
   }
+
+
 
 });

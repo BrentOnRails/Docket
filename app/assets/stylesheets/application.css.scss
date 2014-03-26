@@ -18,6 +18,7 @@ body {
   padding-top: 100px;
   padding-left: 15px;
   padding-right: 15px;
+  background-image:url('454.jpeg');
 }
 
 #avatar {
@@ -33,6 +34,7 @@ body {
 }
 
 .panel-inverse {
+  opacity: 0.97;
   @include panel-variant($navbar-inverse-brand-color, $navbar-inverse-brand-color, $navbar-inverse-bg, $navbar-inverse-border);
   border:2px solid;
 }
@@ -51,17 +53,18 @@ body {
   background: $jumbotron-bg;
 }
 
+
 .day {
-  font-size: 20px;
+  font-size: 2em;
 }
 
 .month {
-  font-size: 10px;
+  font-size: 0.75em;
   display: block;
 }
 
 .weekday {
-  font-size: 10px;
+  font-size: 0.75em;
   display: block;
 }
 
@@ -74,6 +77,28 @@ body {
   display: inline;
 }
 
+#time-tags{
+  background-color: black;
+  opacity: 0.9;
 
-//$border, $heading-text-color, $heading-text-colorading-bg-color, $heading-border
+  li{
+    a{
+      color: grey;
+    }
+    margin: 5px;
+    &.active > a {
+            &,
+            &:hover,
+            &:focus {
+              color: black;
+              background-color: $nav-pills-active-link-hover-color;
+            }
+          }
+  }
+}
+
+.hero {
+  opacity: 0.92;
+}
+
 
