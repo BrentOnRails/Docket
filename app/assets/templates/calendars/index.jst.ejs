@@ -43,9 +43,11 @@
   <% entries.each(function(entry) { %>
     <div class="panel-group" id="accordion">
       <div class="panel panel-inverse">
-      <div class="panel-heading">
-      <a class="togglelink" data-toggle="collapse" data-parent="accordion" href="#collapse<%= entry.id %>">
-
+      
+      
+      <div class="panel-heading" 
+			<a class="togglelink" data-toggle="collapse" data-parent="accordion" href="#collapse<%= entry.id %>"
+			>
       <% if(entry.escape("date")){ %>
       <% var d = new Date(entry.escape("date")) %>
 
@@ -55,10 +57,14 @@
 
       <% var dd =  d.getDate()+ 1 %>
       <% var mm = d.getMonth() %>
-      <% var ww = d.getDay()+1 %>
+      <% var ww = d.getDay() %>
 
       <div class="date-holder">
+			  <% if (dd < 10){ %>
+				  <span class="day single-digit"><%= mm %></span>
+				<% } else { %>
         <span class="day"><%= dd %></span>
+				<% } %>
         <div class="week-month">
           <span class="month"><%= months[mm] %></span>
           <span class="weekday"><%= weekdays[ww] %></span>
@@ -71,7 +77,6 @@
     </div>
   <% } %>
 
-      <% entry.escape("date_string") %>
       <%= entry.escape("title") %></a>
 
     </div>
