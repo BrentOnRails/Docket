@@ -180,15 +180,26 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
         var p = entry_date.setDate(entry_date.getDate() + 1)
         entry_date = new Date(p);
         if (entry.get("date") != null){
-          diff = that._diff(today, entry_date);
-          day_diff = entry_date.getDay() - today.getDay();
-          if (offset >= 0 && diff >= 0 && diff <= offset && day_diff <= offset){
-            entries.push(entry);
-          } else if (offset < 0 && entry_date < today){
-            entries.push(entry);
-          } else if (day_diff == 0){
-            entries.push(entry);
-          }
+          var diff = that._diff(today, entry_date);
+					var day_diff = (entry_date.getDay() - today.getDay());
+          var day_same = (entry_date.getDay() == today.getDay());
+					var month_same = (entry_date.getMonth() == today.getMonth());
+					var year_same = (entry_date.getYear() == today.getYear());
+					if (offset == 0){
+						if (day_same && month_same && year_same){
+							entries.push(entry);
+						}
+					} else if (offset == 7){
+						if (year_same && month_same && day_diff <= 7 && day_diff > 0){
+							entries.push(entry);
+						}
+					} else if (offset == 31){
+						if (year_same && day_diff <= 31 && day_diff > 0){
+							entries.push(entry);
+						}
+					} else if (offset < 0 && day_diff < 0){
+						entries.push(entry);
+					}
         }
       })
       return entries;
