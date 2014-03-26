@@ -24,7 +24,7 @@
 <a href="/#calendars/new" class="btn btn-inverse" id="new-cal"><span class="glyphicon glyphicon-calendar"></span>  </a>
 
 
-<a href="/#entries/new" class="btn btn-inverse" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Click Here to Create a New Event"> <span class="glyphicon glyphicon-plus"></span> </a><br><br>
+<a href="/#entries/new" class="btn btn-inverse" id="new-event"> <span class="glyphicon glyphicon-plus"></span> </a><br><br>
 
 </div>
 
@@ -112,7 +112,13 @@ $(document).ready(function(){
   $('#new-cal').tooltip({
       'show': true,
           'placement': 'bottom',
-          'title': "Click Here to Create a New Calendar"
+          'title': "Click the Button to Create a New Calendar"
+  });
+	
+  $('#new-event').tooltip({
+      'show': true,
+          'placement': 'bottom',
+          'title': "Click the Button to Create a New Event"
   });
 
 
