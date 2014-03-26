@@ -177,8 +177,8 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
       Docket.entries.each(function(entry) {
         var today = new Date();
         var entry_date = new Date(entry.get("date"));
-        // var p = entry_date.setDate(entry_date.getDate() + 1)
-//         entry_date = new Date(p);
+        var p = entry_date.setDate(entry_date.getDate() + 1)
+        entry_date = new Date(p);
         if (entry.get("date") != null){
           var diff = that._diff(today, entry_date);
 					var day_diff = (entry_date.getDay() - today.getDay());
