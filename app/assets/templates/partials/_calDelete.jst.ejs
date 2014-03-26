@@ -1,0 +1,17 @@
+            <!--  Header -->
+<div class="modal-header navbar-inverse">
+    <button type="button" class="close modal-close" data-dismiss="modal"
+    aria-hidden="true">×</button>
+    <h1 class="modal-title lighten-inverse" id="myLargeModalLabel">Delete Calendar "<%= cal.get("title") %>"?</h1>
+</div>
+            <!-- Body -->
+<div class="modal-body">
+  <h2> Deleting a Calendar will delete all associated Events </h2>
+
+  <h4> Event, Tasks, and Plans will not be recoverable </h4>
+</div>
+            <!-- Footer -->
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+  <button class="btn btn-danger confirm-delete-calendar" data-id="<%= id %>">Delete Calendar</button>
+</div>

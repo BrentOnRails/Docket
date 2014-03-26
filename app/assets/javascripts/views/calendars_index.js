@@ -2,12 +2,11 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
 
   template: JST['calendars/index'],
 
-  calAlert: JST['calendars/alert'],
+  calDelete: JST['partials/_calDelete'],
 
   events: {
     "click .delete-calendar" : "deleteCalendarPrompt",
     "click .delete-event" : "deleteEventPrompt",
-    "click .confirm-delete" : "destroyCalendar"
   },
 
   initialize: function (options) {
@@ -23,7 +22,6 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
     });
 
 
-
     this.$el.html(renderedContent);
     this.$(this.active).attr("class","active");
 
@@ -33,22 +31,26 @@ Docket.Views.CalendarsIndex = Backbone.View.extend({
   deleteCalendarPrompt: function(event) {
     var id = $(event.target).data("id");
     var cal = Docket.calendars.get(id);
-    var renderedContent = this.calAlert({
+    var that = this;
+    var renderedContent = this.calDelete({
       id: id,
       cal: cal
     });
 
+
     $(".application-lg-modal .modal-content").html(renderedContent)
     $(".application-lg-modal").modal("show");
+    $(".confirm-delete-calendar").on("click", function(event){
+      that.destroyCalendar(event);
+      $(".application-lg-modal").modal("hide");
+    });
 
   },
 
   deleteEventPrompt: function(event) {
     var id = $(event.target).data("id");
     var entry = Docket.entries.get(id);
-    $(".application-lg-modal .modal-content").html(this.calAlert)
-    $(".application-lg-modal").model("show");
-    debugger
+
   },
 
   destroyCalendar: function (event) {

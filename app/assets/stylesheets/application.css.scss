@@ -21,6 +21,14 @@ body {
   background-image:url('454.jpeg');
 }
 
+.lighten-inverse {
+  color: lighten($navbar-inverse-brand-color, 10% )
+}
+
+.modal-close {
+  color: white;
+}
+
 #avatar {
   height: 45px;
   width: 45px;
