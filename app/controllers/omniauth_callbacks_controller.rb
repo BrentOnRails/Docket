@@ -102,6 +102,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
                       avatar_url: avatar_url
       )
       user.save
+      AuthMailer.signup_email(@user).deliver!
     end
     return user
   end
@@ -110,12 +111,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if user = User.find_by_name(name)
       user
     else
-      user = User.new(:name => name, 
+      user = User.new(:name => name,
                       :password => Devise.friendly_token[0,20],
                       :email => "#{UUIDTools::UUID.random_create}@host",
                       :avatar_url => avatar_url
       )
       user.save :validate => false
+      AuthMailer.signup_email(@user).deliver!
     end
     return user
   end
