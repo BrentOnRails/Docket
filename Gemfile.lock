@@ -67,6 +67,8 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-async (0.9.0)
+      devise (~> 3.2)
     eco (1.0.0)
       coffee-script
       eco-source
@@ -200,6 +202,7 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 4.0.0)
   devise
+  devise-async
   ejs
   figaro
   jbuilder

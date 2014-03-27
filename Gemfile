@@ -36,9 +36,11 @@ end
 
 
 
-
 # authentication
 gem 'devise'
 gem 'figaro'
 gem 'omniauth-google-oauth2'
 gem 'uuidtools'
+
+#async mailer
+gem "devise-async"
