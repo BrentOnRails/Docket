@@ -1,8 +1,90 @@
+<div id="splash" class="container-fluid">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <%= cl_image_tag("people.jpg", :width => 2000, :height => 750, :crop => :fill) %>
+          <div class="carousel-caption">
+            <a class="btn btn-primary" href="/users/sign_in">Sign In</a>
+            <a class="btn btn-primary" href="/users/sign_up">Sign Up</a>
+          </div>
+        </div>
+        <div class="item">
+        <%= cl_image_tag("proper-handshake.jpg", :width => 2000, :height => 750, :crop => :fill )%>
+        <div class="carousel-caption">
+          <a class="btn btn-primary" href="/users/sign_in">Sign In</a>
+          <a class="btn btn-primary" href="/users/sign_up">Sign Up</a>
+        </div>
+        </div>
+
+        <div class="item">
+        <%= cl_image_tag("docket.png", :width => 2000, :height => 750, :crop => :fill) %>
+        <div class="carousel-caption">
+          <a class="btn btn-primary" href="/users/sign_in">Sign In</a>
+          <a class="btn btn-primary" href="/users/sign_up">Sign Up</a>
+        </div>
+        </div>
+
+      </div>
+      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+
+
+
+<div class="docket-page">
+          <div class="maia-aux">
+            <h2 class="text-center">
+              Welcome to Docket
+            </h2>
+            <h5 class="text-center blurb">
+            <p>Docket is a calendar / TO-DO application.</p>
+
+            <p>Rather than showing your appointments as a grid view, Docket orders them into customizable categories that you can archive, edit, or update as need be.</p>
+            <p>  Docket allows you to see "what's on the docket" and move on with your life!</p>
+            <br>
+            <a class="btn btn-primary" href="/users/sign_up">Create an account today</a>
+            </h5>
+            <div class="maia-cols">
+              <div class="maia-col-6 docket-feature-set">
+                <%= cl_image_tag("mobile-feature.png")%>
+                <div>
+                  <h4>
+                    Experience Docket on any device
+                  </h4>
+                  <p>
+                    The best of Docket is available wherever you are, from any device.
+                  </p>
+                </div>
+              </div>
+              <div class="maia-col-6 docket-feature-set">
+                <%= cl_image_tag("smileypeople.png") %>
+                <div>
+                  <h4>
+                    Get Things Done
+                  </h4>
+                  <p>
+                    Docket lets you focus on getting things done by using a simple task-based calendar solutions.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+  </div>
 
 <div id="content">
-  <div class="jumbotron">
-    <h1>hello world!</h1>
-  </div>
+
+
 </div>
 
 

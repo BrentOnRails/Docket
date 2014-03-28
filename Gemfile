@@ -34,7 +34,7 @@ group :development do
   gem 'annotate'
 end
 
-
+gem 'cloudinary'
 
 # authentication
 gem 'devise'
