@@ -15,7 +15,6 @@
 @import "bootstrap";
 
 body {
-  padding-top: 100px;
   padding-left: 15px;
   padding-right: 15px;
   background-image:url('454.jpeg');
@@ -29,6 +28,14 @@ body {
   color: white;
 }
 
+.docket-page {
+  background-color: white;
+}
+
+#splash {
+  background-color: white;
+  padding-bottom: 200px;
+}
 
 
 #avatar {
@@ -63,6 +70,17 @@ body {
   background: $jumbotron-bg;
 }
 
+.docket-feature-set {
+  display: inline-block;
+  margin-left: 22%;
+  width: 20%;
+}
+
+.blurb {
+  width: 33%;
+  margin-left: 33%;
+  margin-right: 33%;
+}
 
 .day {
   font-size: 2em;
@@ -118,4 +136,9 @@ body {
   opacity: 0.92;
 }
 
-
+.center
+{
+margin-left:auto;
+margin-right:auto;
+width:70%;
+}

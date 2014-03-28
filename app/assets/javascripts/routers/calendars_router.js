@@ -21,6 +21,7 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
 
 
   index: function () {
+    $('#splash').remove()
     var indexView = new Docket.Views.CalendarsIndex({
       collection: this.entries,
       active: "#all"

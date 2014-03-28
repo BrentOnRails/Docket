@@ -1,8 +1,12 @@
 
 
-<h2>Sign up</h2>
 
-<div class="jumbotron">
+
+<div class="jumbotron center">
+
+  <button class="btn btn-primary"> DEMO USER </button>
+
+  <h2>Sign up with Email</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -24,8 +28,11 @@
   <div><%= f.submit "Sign up with Email", class: 'btn btn-primary' %></div>
 <% end %>
 
+<h2>Sign up with Google</h2>
 
+<h4>
 <%= render "devise/shared/links" %>
+</h4>
 </div>
 
 
