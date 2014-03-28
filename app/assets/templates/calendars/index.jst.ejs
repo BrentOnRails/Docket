@@ -83,7 +83,7 @@
       <div id="collapse<%= entry.id%>" class="panel-collapse collapse">
       <div class="panel-body panel-entries">
       <h4 class="text-center full-date"> <%= full %> </h4>
-        <div class="jumbotron"><h3> <a href="#entries/<%= entry.escape('id')%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a> <%= entry.escape("notes") %></h3></div>
+        <div class="jumbotron"><p class="lead"> <a href="#entries/<%= entry.escape('id')%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a> <%= entry.escape("notes") %></p></div>
 		     <span class="glyphicon glyphicon-calendar"></span> <%= calendars.get(entry.escape("calendar_id")).escape("title") %> <br>
 
         <a href="#entries/<%= entry.escape('id')%>/edit" >Edit</a> -
