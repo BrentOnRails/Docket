@@ -196,7 +196,7 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
 						if (isToday && diff >= 0){
 							entries.push(entry);
 						}
-					} else if (diff > 0 && diff <= offset){
+					} else if (diff >= 0 && diff <= offset){
 							entries.push(entry);
 					} else if (offset == -1 && isPast){
 						entries.push(entry);
