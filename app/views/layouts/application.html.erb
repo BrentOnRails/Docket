@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
+
+
 </head>
 <body>
 
@@ -25,18 +27,18 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 
-        <!-- <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <% if user_signed_in? %>
-        <li><%= link_to "My Calendars", "#" %></li>
-          <form class="navbar-form navbar-left" role="search">
+        <li><%= link_to "My Calendars", "#calendars" %></li>
+          <!-- <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
-          </form>
+          </form> -->
 
         <% end %>
-        </ul> -->
+        </ul>
 
         <ul class="nav navbar-nav navbar-right">
 

@@ -19,6 +19,12 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
     "entries/:id/edit" : "editEntry"
   },
 
+  demo: function () {
+    debugger
+      $('#user_email').text("demo@example.com")
+      $('#user_password').text("b1217976")
+  },
+
 
   index: function () {
     $('#splash').remove()
