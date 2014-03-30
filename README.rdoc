@@ -8,3 +8,5 @@ HOWEVER, this is currently a work in progress, and I don't suggest you make any 
 This is an appliation I'm developing to showcase some of the skills I've learned as a Web Developer. The intent is to use this during my application process.
 
 Cheers!
+
+brent
