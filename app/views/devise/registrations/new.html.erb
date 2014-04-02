@@ -4,7 +4,13 @@
 
 <div class="jumbotron center">
 
-  <button class="btn btn-primary"> DEMO USER </button>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.hidden_field :email, value: "demo@example.com" %>
+
+        <%= f.hidden_field :password, value: "password" %>
+
+        <div><%= f.submit "Sign in as Guest", :class => "btn btn-lg btn-primary" %></div>
+  <% end %>
 
   <h2>Sign up with Email</h2>
 
