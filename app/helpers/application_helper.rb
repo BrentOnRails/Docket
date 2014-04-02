@@ -1,14 +1,15 @@
 module ApplicationHelper
   def avatar_url(user)
-    if user.avatar_url.present?
+    if user
+      if user.avatar_url
       user.avatar_url
-    else
+      else
+        gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
 
-      gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-
-      user.avatar_url = "http://gravatar.com/avatar/#{gravatar_id}.png"
-      user.save
-      user.avatar_url
+        user.avatar_url = "http://gravatar.com/avatar/#{gravatar_id}.png"
+        user.save
+        user.avatar_url
+      end
     end
   end
 
