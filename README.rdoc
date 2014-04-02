@@ -1,7 +1,7 @@
-== README
+
 
 This README would normally document whatever steps are necessary to get the
-application up and running.  
+application up and running.
 
 HOWEVER, this is currently a work in progress, and I don't suggest you make any attempt to get this application up and running.
 
@@ -9,4 +9,6 @@ This is an appliation I'm developing to showcase some of the skills I've learned
 
 Cheers!
 
+
 Brent
+
