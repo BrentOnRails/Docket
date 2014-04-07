@@ -1,4 +1,3 @@
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -7,6 +6,7 @@ HOWEVER, this is currently a work in progress, so I don't suggest you make any a
 This is an appliation I'm developing to showcase some of the skills I've learned as a Web Developer. The intent is to use this during my application process.
 
 Cheers!
+
 
 
 Brent
