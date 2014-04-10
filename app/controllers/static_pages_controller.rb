@@ -2,6 +2,6 @@ class StaticPagesController < ApplicationController
 
 
   def index
-    render :index
-  end
+      render :index
+    end
 end

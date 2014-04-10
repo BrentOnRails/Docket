@@ -8,7 +8,7 @@
   <h1> Guest User </h1>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= f.hidden_field :email, value: "demo@example.com" %>
+        <%= f.hidden_field :email, value: "Guest" + User.count + "@example.com" %>
 
         <%= f.hidden_field :password, value: "password" %>
 
