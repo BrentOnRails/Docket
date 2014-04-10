@@ -19,7 +19,7 @@ class CalendarsController < ApplicationController
     cal.events.build(title: "Month Example", date: 20.days.from_now, notes: "Anything 30 days or less in the future shows on month tab").save
     cal.events.build(title: "Visit my portfolio site", notes: "BrentOnRails.com").save
     cal.events.build(title: "Hite a Web Dev!", notes: "I'm one and I know others, hit me up!").save
-    cal.events.build(title: "Check Back!", date: 1.day.from.now, notes: "Theres new features added everyday!").save
+    cal.events.build(title: "Check Back!", date: 1.day.from_now, notes: "Theres new features added everyday!").save
     return current_user.calendars
   end
 
