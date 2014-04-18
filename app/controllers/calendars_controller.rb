@@ -20,6 +20,7 @@ class CalendarsController < ApplicationController
     cal.events.build(title: "Visit my portfolio site", notes: "BrentOnRails.com").save
     cal.events.build(title: "Hire a Web Developer!", notes: "I'm one and I know others, hit me up!").save
     cal.events.build(title: "Check Back!", date: 1.day.from_now, notes: "Theres new features added everyday!").save
+    cal.events.build(title: "Missed!", date: 1.day.ago, notes: "This is an example of a calendar entry from before today!").save
     return current_user.calendars
   end
 

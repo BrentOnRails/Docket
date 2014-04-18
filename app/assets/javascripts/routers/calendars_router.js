@@ -8,6 +8,7 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
 
   routes: {
     "" : "index",
+	"all" : "all",
     "calendars" : "index",
     "calendars/new" : "new",
     "today" : "today",
@@ -28,6 +29,16 @@ Docket.Routers.AppRouter = Backbone.Router.extend({
     })
 
     this._swapView(indexView);
+	this.today();
+  },
+  
+  all: function () {
+      var allView = new Docket.Views.CalendarsIndex({
+        collection: this.entries,
+        active: "#all"
+      })
+
+      this._swapView(allView);
   },
 
   new: function () {
